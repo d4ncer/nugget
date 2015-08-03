@@ -1,7 +1,19 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+
+		title= title
+
+		//- Common JS
+		script(src='/js/common.js')
+	body
+		block content
+
+		//- JavaScript
+		if (nodeEnv === 'development')
+			script(src='http://localhost:3001/webpack-dev-server.js')
+
+		block js

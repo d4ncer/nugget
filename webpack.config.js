@@ -29,7 +29,8 @@ var config = {
     loaders: [
       {
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        loader: 'style!css!sass',
+        include: srcPath
       },
       {
         test: /\.jsx$/,

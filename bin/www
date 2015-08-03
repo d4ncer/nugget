@@ -13,7 +13,7 @@ var http = require('http');
  */
 
 var isProd = process.env.NODE_ENV === 'production';
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '2992');
 app.set('port', port);
 
 /**

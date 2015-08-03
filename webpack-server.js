@@ -33,7 +33,7 @@ module.exports = function () {
 
     // Proxy to Node server
     proxy: {
-      '*': 'http://localhost:3000'
+      '*': 'http://localhost:2992'
     },
 
     // The rest is terminal configurations
