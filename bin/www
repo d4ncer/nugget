@@ -12,6 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
+var isProd = process.env.NODE_ENV === 'production';
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
@@ -20,6 +21,16 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+/**
+ * Webpack dev server for hot loading
+ */
+
+if (!isProd) {
+  var bundle = require('../webpack-server');
+
+  bundle();
+}
 
 /**
  * Listen on provided port, on all network interfaces.
