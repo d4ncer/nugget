@@ -3,10 +3,14 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 
 
 module.exports = function(app) {
   var rootDir = process.cwd();
+
+  // Set up cors
+  app.use(cors());
 
   // view engine setup
   app.set('views', path.join(rootDir, 'server/views'));
@@ -21,6 +25,7 @@ module.exports = function(app) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
 
-  // TODO: Change this to 'client/public' once build tool is set up
-  app.use(express.static(path.join(rootDir, 'client/src')));
+  app.use(express.static(path.join(rootDir, 'client/public')));
+
+  app.locals.nodeEnv = app.get('env');
 };
