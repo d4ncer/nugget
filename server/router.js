@@ -1,6 +1,6 @@
 var middleware = require('./config/middleware');
 var index = require('./routes/index');
-var hello = require('./routes/hello');
+var about = require('./routes/about');
 
 
 module.exports = function(app) {
