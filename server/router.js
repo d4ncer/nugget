@@ -1,5 +1,6 @@
 var middleware = require('./config/middleware');
 var index = require('./routes/index');
+var hello = require('./routes/hello');
 
 
 module.exports = function(app) {
@@ -9,6 +10,7 @@ module.exports = function(app) {
 
   // All routes
   app.use('/', index);
+  app.use('/about', about);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
