@@ -33,7 +33,7 @@ module.exports.getAbout = function(callback){
     
     cursor.toArray(function(err, result) {
         if (err) throw err;
-        callback(null, JSON.stringify(result));
+        callback(null, result);
     });
 	});
 }

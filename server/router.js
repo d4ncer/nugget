@@ -3,6 +3,8 @@ var database = require('./config/database');
 var index = require('./routes/index');
 var about = require('./routes/about');
 
+var apiAbout = require('./api/about');
+
 module.exports = function(app) {
 
   // Add common middleware here
@@ -14,6 +16,8 @@ module.exports = function(app) {
   // All routes
   app.use('/', index);
   app.use('/about', about);
+
+  app.use('/api/about', apiAbout);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
