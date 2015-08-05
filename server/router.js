@@ -1,12 +1,15 @@
 var middleware = require('./config/middleware');
+var database = require('./config/database');
 var index = require('./routes/index');
 var about = require('./routes/about');
-
 
 module.exports = function(app) {
 
   // Add common middleware here
   middleware(app);
+
+  //Connect to Database
+  database.setup();
 
   // All routes
   app.use('/', index);

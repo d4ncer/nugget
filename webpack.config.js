@@ -18,6 +18,7 @@ var config = {
   devtool: 'eval',
   entry: {
     landing: entryArrayCreator('landing.jsx'),
+    aboutEntry: entryArrayCreator('aboutEntry.jsx'),
     client: 'webpack-dev-server/client?http://localhost:3001'
   },
   output: {
