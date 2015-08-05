@@ -34,4 +34,7 @@ node_modules
 # Build
 client/public
 
+# RethinkDB Data
+rethinkdb_data
+
 

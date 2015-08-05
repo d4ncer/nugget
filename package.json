@@ -15,7 +15,9 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "react": "^0.13.3",
-    "serve-favicon": "~2.3.0"
+    "rethinkdb": "^2.0.2",
+    "serve-favicon": "~2.3.0",
+    "superagent": "^1.2.0"
   },
   "devDependencies": {
     "css-loader": "^0.15.6",
