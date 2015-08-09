@@ -11,7 +11,7 @@ module.exports = function(app) {
   middleware(app);
 
   //Connect to Database
-  database.setup();
+  // database.setup();
 
   // All routes
   app.use('/', index);

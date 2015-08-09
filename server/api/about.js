@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var database = require('../config/database');
+var users = require('../models/users');
+
+console.log(users.getAll());
 
 router.get('/', function(req, res) {
 
@@ -11,9 +13,10 @@ router.get('/', function(req, res) {
     else
       res.json({about: results});
   };
+  console.log("OK, in about");
 
   //Pass a callback to getAbout function to fetch About data
-  database.getAbout(aboutData);
+  users.getAll();
 });
 
 

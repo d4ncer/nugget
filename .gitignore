@@ -37,4 +37,5 @@ client/public
 # RethinkDB Data
 rethinkdb_data
 
-
+# Mac DS_store
+.DS_store
