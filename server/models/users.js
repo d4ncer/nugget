@@ -1,5 +1,4 @@
-var database = require('../config/database');
-var thinky = require('thinky')(database.dbConfig);
+var thinky = require('../config/database');
 
 var r = thinky.r;
 var type = thinky.type;
@@ -11,14 +10,19 @@ var User = thinky.createModel("users", {
   email: type.string()
 });
 
-module.exports = {
-	getAll: function() {
-     //  console.log("About Thinky");
-     //  console.log(User.orderBy({index: "id"}).run());
-	    // return User.orderBy({index: "id"}).run();
+// Define User API Endpoints
+var UserApi = {
+  getAll: function(req, res){
+  	User.orderBy("id").run().then(function(result) {
+      res.send(JSON.stringify(result));
+    }).error(handleError(res));
+  }
+};
 
-      User.orderBy({index: "id"}).run().then(function(result) {
-        return JSON.stringify(result);
-      }).error(console.log(this));
-	}
+function handleError(res){
+	return function(error) {
+    return res.send(500, {error: error.message});
+  }
 }
+
+module.exports = UserApi;

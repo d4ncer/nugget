@@ -1,23 +1,21 @@
 var middleware = require('./config/middleware');
-var database = require('./config/database');
+var thinky = require('./config/database');
 var index = require('./routes/index');
 var about = require('./routes/about');
-
-var apiAbout = require('./api/about');
+var apiUser = require('./api/users');
 
 module.exports = function(app) {
 
   // Add common middleware here
   middleware(app);
 
-  //Connect to Database
-  // database.setup();
+  //Setup the Database, if not setup already
+  thinky.databaseSetUp();
 
   // All routes
   app.use('/', index);
   app.use('/about', about);
-
-  app.use('/api/about', apiAbout);
+  app.use('/api/users', apiUser);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
