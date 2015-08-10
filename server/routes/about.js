@@ -1,20 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var database = require('../config/database');
 
-router.get('/', function(req, res) {
-
-	var aboutData = function(err, results){
-		console.log("result: "  + results);
-		if(err) 
-			throw err;
-		else
-			res.render('about', {about: results});
-	};
-
-	//Pass a callback to getAbout function to fetch About data
-	database.getAbout(aboutData);
+// GET About page
+router.get('/', function(req, res){
+	res.render('about', {title: 'About'});
 });
-
 
 module.exports = router;
