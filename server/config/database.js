@@ -10,12 +10,14 @@ var dbConfig = {
 
 // Initiate the Database connection
 var thinky = require('thinky')(dbConfig);
-var r = require('rethinkdb'), assert = require('assert');
+var r = require('rethinkdb');
 
 // Setup the Database
 thinky.databaseSetUp = function(){
   r.connect({host: dbConfig.host, port: dbConfig.port}, function (err, connection) {
-    assert.ok(err === null, err);
+    if (err){
+      console.log(err);
+    }
     r.dbCreate(dbConfig.db).run(connection, function(err, result) {
       if(err) {
         console.log("[DEBUG] RethinkDB database '%s' already exists (%s:%s)\n%s", dbConfig.db, err.name, err.msg, err.message);
