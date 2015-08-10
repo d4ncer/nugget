@@ -13,9 +13,9 @@ var thinky = require('thinky')(dbConfig);
 var r = require('rethinkdb');
 
 // Setup the Database
-thinky.databaseSetUp = function(){
+thinky.databaseSetUp = function() {
   r.connect({host: dbConfig.host, port: dbConfig.port}, function (err, connection) {
-    if (err){
+    if(err) {
       console.log(err);
     }
     r.dbCreate(dbConfig.db).run(connection, function(err, result) {

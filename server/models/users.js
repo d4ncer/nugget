@@ -12,17 +12,11 @@ var User = thinky.createModel("users", {
 
 // Define User API Endpoints
 var UserApi = {
-  getAll: function(req, res){
-  	User.orderBy("id").run().then(function(result) {
-      res.send(JSON.stringify(result));
-    }).error(handleError(res));
+  getAll: function(callback){
+  	User.orderBy("id").run(function(err, data) {
+      callback(err, data);
+    });
   }
 };
-
-function handleError(res){
-	return function(error) {
-    return res.send(500, {error: error.message});
-  }
-}
 
 module.exports = UserApi;
