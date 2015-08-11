@@ -1,5 +1,4 @@
 var express = require('express');
-var auth = require('../auth/auth.service')
 var User = require('../models/users');
 var auth = require('../auth/auth.service');
 var router = express.Router();

@@ -4,6 +4,7 @@ var User = require('../models/users');
 var config = require('../config/config');
 var google = require('./google');
 
+// Serialize and Deserialize users
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
