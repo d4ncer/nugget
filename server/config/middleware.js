@@ -4,6 +4,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var session = require('express-session');
+var passport = require('passport');
 
 
 module.exports = function(app) {
@@ -24,6 +26,9 @@ module.exports = function(app) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
+  app.use(session({secret: 'spicy nugget'}));
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.use(express.static(path.join(rootDir, 'client/public')));
 
