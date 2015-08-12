@@ -28,7 +28,7 @@ module.exports = function(app) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use(session({
-    store: new RedisStore,
+    store: new RedisStore(),
     secret: 'spicy nugget', 
     resave: true, 
     saveUninitialized: true
