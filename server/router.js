@@ -4,7 +4,6 @@ var index = require('./routes/index');
 var about = require('./routes/about');
 var apiUser = require('./api/users');
 var auth = require('./auth');
-var modelUser = require('./models/users');
 
 
 module.exports = function(app) {

@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 var passport = require('passport');
 
 
@@ -26,7 +27,12 @@ module.exports = function(app) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use(session({secret: 'spicy nugget', resave: true, saveUninitialized: true}));
+  app.use(session({
+    store: new RedisStore,
+    secret: 'spicy nugget', 
+    resave: true, 
+    saveUninitialized: true
+  }));
   app.use(passport.initialize());
   app.use(passport.session());
 
