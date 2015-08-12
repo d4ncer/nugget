@@ -1,34 +1,26 @@
-// RethinkDB database details.
-var dbConfig = {
-  host: process.env.RDB_HOST || 'localhost',
-  port: parseInt(process.env.RDB_PORT) || 28015,
-  db: process.env.RDB_DB || 'nugget',
-  tables: {
-    'users': 'id'
-  }
-};
+var config = require('./config');
 
 // Initiate the Database connection
-var thinky = require('thinky')(dbConfig);
+var thinky = require('thinky')(config.dbConfig);
 var r = require('rethinkdb');
 
 // Setup the Database
 thinky.databaseSetUp = function() {
-  r.connect({host: dbConfig.host, port: dbConfig.port}, function (err, connection) {
+  r.connect({host: config.dbConfig.host, port: config.dbConfig.port}, function (err, connection) {
     if(err) {
       console.log(err);
     }
-    r.dbCreate(dbConfig.db).run(connection, function(err, result) {
+    r.dbCreate(config.dbConfig.db).run(connection, function(err, result) {
       if(err) {
-        console.log("[DEBUG] RethinkDB database '%s' already exists (%s:%s)\n%s", dbConfig.db, err.name, err.msg, err.message);
+        console.log("[DEBUG] RethinkDB database '%s' already exists (%s:%s)\n%s", config.dbConfig.db, err.name, err.msg, err.message);
       }
       else {
-        console.log("[INFO ] RethinkDB database '%s' created", dbConfig.db);
+        console.log("[INFO ] RethinkDB database '%s' created", config.dbConfig.db);
       }
 
-      for(var tbl in dbConfig.tables) {
+      for(var tbl in config.dbConfig.tables) {
         (function (tableName) {
-          r.db(dbConfig.db).tableCreate(tableName, {primaryKey: dbConfig.tables[tbl]}).run(connection, function(err, result) {
+          r.db(config.dbConfig.db).tableCreate(tableName, {primaryKey: config.dbConfig.tables[tbl]}).run(connection, function(err, result) {
             if(err) {
               console.log("[DEBUG] RethinkDB table '%s' already exists (%s:%s)\n%s", tableName, err.name, err.msg, err.message);
             }

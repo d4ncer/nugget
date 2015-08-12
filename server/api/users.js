@@ -1,9 +1,10 @@
 var express = require('express');
-var router = express.Router();
 var User = require('../models/users');
+var auth = require('../auth/auth.service');
+var router = express.Router();
 
 // GET /api/users/ 
-router.get('/', function(req, res) {
+router.get('/', auth.isLoggedIn, function(req, res) {
   User.getAll(function(err, data) {
     if(err) {
       return res(err);

@@ -3,6 +3,8 @@ var thinky = require('./config/database');
 var index = require('./routes/index');
 var about = require('./routes/about');
 var apiUser = require('./api/users');
+var auth = require('./auth');
+
 
 module.exports = function(app) {
 
@@ -16,6 +18,10 @@ module.exports = function(app) {
   app.use('/', index);
   app.use('/about', about);
   app.use('/api/users', apiUser);
+  app.use('/auth', auth);
+  app.get('/logout', function(req, res, next) {
+    res.send(req.logout());
+  });
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
