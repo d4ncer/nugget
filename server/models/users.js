@@ -31,7 +31,7 @@ var UserApi = {
         User.insert({
           google_id: profile.id,
           name: profile.displayName,
-          eamil: profile.emails[0].value,
+          email: profile.emails[0].value,
           image: profile.photos[0].value
         }).run(function (err, result) {
           if (result.inserted == 1) {
