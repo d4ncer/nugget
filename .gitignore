@@ -39,3 +39,6 @@ rethinkdb_data
 
 # Mac DS_store
 .DS_store
+
+# Ignore Config file
+./server/config/config.js 
